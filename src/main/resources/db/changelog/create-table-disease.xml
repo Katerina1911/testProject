@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create-table-disease" author="admin">
+        <createTable tableName="disease">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="onset_date_of_illness" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date_of_illness" type="date">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description_of_treatment" type="varchar(1024)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="disability_certificate" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="mkb10_id" type="int">
+                <constraints foreignKeyName="disease_id_mkb10_id" references="mkb10(id)" deleteCascade="true"/>
+            </column>
+            <column name="patient_id" type="int">
+                <constraints foreignKeyName="disease_id_patient_id" references="patient(id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

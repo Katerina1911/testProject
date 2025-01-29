@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="admin">
+        <tagDatabase tag="v.0"/>
+    </changeSet>
+
+    <include file="create-table-patient-test.xml" relativeToChangelogFile="true"/>
+
+    <include file="create-table-mkb10-test.xml" relativeToChangelogFile="true"/>
+
+    <include file="create-table-disease-test.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

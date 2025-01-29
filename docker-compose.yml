@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:17.2
+    environment:
+      POSTGRES_USER: ${POSTGRESQL_DB_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRESQL_DB_PASSWORD}
+      POSTGRES_DB: medcard
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  postgres_test:
+    image: postgres:17.2
+    environment:
+      POSTGRES_USER: ${POSTGRESQL_DB_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRESQL_DB_PASSWORD}
+      POSTGRES_DB: medcard
+    volumes:
+      - postgres_test:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+volumes:
+  postgres: ~
+  postgres_test: ~
