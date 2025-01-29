@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.bondarenko.test.testproject.models.Patient;
 import ru.bondarenko.test.testproject.repositories.PatientRepository;
-import ru.bondarenko.test.testproject.services.entityForUpdate.PatientUpdate;
 import ru.bondarenko.test.testproject.services.exception.PatientNotFoundException;
 
 import java.util.Optional;
@@ -30,21 +29,17 @@ public class PatientService {
 
     @Transactional
     public void updatePatient(Patient patient, int id) {
-        PatientUpdate updatePatient = mapToPatientUpdate(patient);
-        updatePatient.setId(id);
-        patientRepository.save(convertToPatient(updatePatient));
+        Patient updatePatient = findPatient(id);
+        updatePatient.setSecondName(patient.getSecondName());
+        updatePatient.setFirstName(patient.getFirstName());
+        updatePatient.setPatronymic(patient.getPatronymic());
+        updatePatient.setSex(patient.getSex());
+        updatePatient.setDateOfBirth(patient.getDateOfBirth());
+        updatePatient.setPoliceNumber(patient.getPoliceNumber());
     }
 
     @Transactional
     public void deletePatient(int id) {
         patientRepository.deleteById(id);
-    }
-
-    public PatientUpdate mapToPatientUpdate(Patient patient) {
-        return modelMapper.map(patient, PatientUpdate.class);
-    }
-
-    public Patient convertToPatient(PatientUpdate patientUpdate) {
-        return modelMapper.map(patientUpdate, Patient.class);
     }
 }

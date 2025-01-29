@@ -8,7 +8,6 @@ import static jakarta.persistence.FetchType.LAZY;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "mkb10")
 public class MKB10 {

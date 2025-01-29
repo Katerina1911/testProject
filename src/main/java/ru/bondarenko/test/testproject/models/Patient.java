@@ -12,7 +12,6 @@ import static jakarta.persistence.FetchType.LAZY;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "Patient")
 public class Patient {
